@@ -3,8 +3,10 @@ FROM node:16.13 as build-deps
 WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 COPY . ./
-RUN npm install
-RUN NODE_OPTIONS=--max_old_space_size=4096
+# RUN npm install
+RUN npm ci
+# RUN NODE_OPTIONS=--max_old_space_size=4096
+RUN npm install --max-old-space-size=4096
 RUN npm run build
 
 
