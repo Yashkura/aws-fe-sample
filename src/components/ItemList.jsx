@@ -109,7 +109,13 @@ const ItemList = () => {
 
   return (
     <>
-      <Box display="flex" flexWrap="wrap" justifyContent="center" gap={2}>
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        justifyContent="center"
+        gap={2}
+        sx={{ mt: 1 }}
+      >
         {currentItems.map((item) => (
           <ItemCard
             key={item.id}

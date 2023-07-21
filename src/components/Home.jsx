@@ -1,12 +1,12 @@
 import React from "react";
-import GridList from "@material-ui/core/GridList";
-import Box from "@mui/material/Box";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import ListSubheader from "@material-ui/core/ListSubheader";
+// import GridList from "@material-ui/core/GridList";
+// import Box from "@mui/material/Box";
+// import GridListTile from "@material-ui/core/GridListTile";
+// import GridListTileBar from "@material-ui/core/GridListTileBar";
+// import ListSubheader from "@material-ui/core/ListSubheader";
 import IconButton from "@material-ui/core/IconButton";
-import InfoIcon from "@material-ui/icons/Info";
-import ImageContainer from "./Images/ImageContainer";
+// import InfoIcon from "@material-ui/icons/Info";
+// import ImageContainer from "./Images/ImageContainer";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -22,7 +22,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import authService from "./../service/authService";
-import ProductCard from "./ProductCard";
+// import ProductCard from "./ProductCard";
 import ItemList from "./ItemList";
 
 const products = [
@@ -225,7 +225,7 @@ export default function Home(props) {
 
   return (
     <>
-      <div style={{ width: "100vw" }} className={classes.grow}>
+      <div className={classes.grow}>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -299,9 +299,7 @@ export default function Home(props) {
           <ProductCard key={product.id} product={product} />
         ))}
       </Box> */}
-      <div width="auto">
-        <ItemList />
-      </div>
+      <ItemList />
       {/* <div className={classes.body_root}>
         <GridList cellHeight={180} className={classes.body_gridList}>
           <GridListTile key="Subheader" cols={2} style={{ height: "auto" }}>

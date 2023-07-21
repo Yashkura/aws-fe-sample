@@ -23,7 +23,15 @@ const ItemCard = ({ item, onQuantityChange }) => {
   };
 
   return (
-    <Card>
+    <Card
+      sx={{
+        width: 225,
+        height: 320,
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+      }}
+    >
       <CardMedia
         component="img"
         height="150"
