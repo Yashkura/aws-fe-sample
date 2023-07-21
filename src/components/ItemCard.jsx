@@ -6,9 +6,11 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const ItemCard = ({ item, onQuantityChange }) => {
   const [quantity, setQuantity] = useState(0);
+  const isMobile = useMediaQuery("(max-width:400px)");
 
   const handleAdd = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -25,36 +27,43 @@ const ItemCard = ({ item, onQuantityChange }) => {
   return (
     <Card
       sx={{
-        width: 225,
         height: 320,
+        width: 200,
         display: "flex",
         justifyContent: "space-between",
         flexDirection: "column",
+        "@media (max-width: 400px)": {
+          width: "min-content",
+        },
       }}
     >
       <CardMedia
         component="img"
-        height="150"
-        width="150"
+        height="120"
+        width="120"
         sx={{ objectFit: "contain" }}
         image={item.imageUrl}
         alt={item.name}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent sx={{ p: 1 }}>
+        <Typography
+          gutterBottom
+          variant={isMobile ? "body1" : "h5"}
+          component="div"
+        >
           {item.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {item.description}
         </Typography>
         <Box display="flex" alignItems="center" marginTop={2}>
-          <Button variant="outlined" onClick={handleSubtract}>
+          <Button size="small" variant="outlined" onClick={handleSubtract}>
             -
           </Button>
           <Typography variant="body1" component="div" marginX={2}>
             {quantity}
           </Typography>
-          <Button variant="outlined" onClick={handleAdd}>
+          <Button size="small" variant="outlined" onClick={handleAdd}>
             +
           </Button>
         </Box>

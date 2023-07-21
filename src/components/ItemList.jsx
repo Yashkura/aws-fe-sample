@@ -91,7 +91,7 @@ const items = [
 
 const ItemList = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = window.innerWidth > 900 ? 12 : 8;
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const [currentItems, setCurrentItems] = useState([]);
 
@@ -110,11 +110,23 @@ const ItemList = () => {
   return (
     <>
       <Box
+        maxWidth="800px"
         display="flex"
         flexWrap="wrap"
-        justifyContent="center"
+        // justifyContent="center"
+        px={5}
         gap={2}
-        sx={{ mt: 1 }}
+        sx={{
+          mt: 1,
+          "@media (max-width: 400px)": {
+            gap: 0.7, // Set gap to 1 for screens with a max-width of 600px (adjust the value as needed)
+            px: 0,
+          },
+          "@media (min-width: 768px)": {
+            maxWidth: "100%",
+            // justifyContent: "center",
+          },
+        }}
       >
         {currentItems.map((item) => (
           <ItemCard
