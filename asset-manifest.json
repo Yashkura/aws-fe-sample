@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/aws-fe-sample/static/css/main.9b1431d8.chunk.css",
+    "main.js": "/aws-fe-sample/static/js/main.5718cd99.chunk.js",
+    "main.js.map": "/aws-fe-sample/static/js/main.5718cd99.chunk.js.map",
+    "runtime-main.js": "/aws-fe-sample/static/js/runtime-main.a5faddc1.js",
+    "runtime-main.js.map": "/aws-fe-sample/static/js/runtime-main.a5faddc1.js.map",
+    "static/js/2.64c5b7d3.chunk.js": "/aws-fe-sample/static/js/2.64c5b7d3.chunk.js",
+    "static/js/2.64c5b7d3.chunk.js.map": "/aws-fe-sample/static/js/2.64c5b7d3.chunk.js.map",
+    "index.html": "/aws-fe-sample/index.html",
+    "precache-manifest.2303a92d4d234eaf61403264a31a2c49.js": "/aws-fe-sample/precache-manifest.2303a92d4d234eaf61403264a31a2c49.js",
+    "service-worker.js": "/aws-fe-sample/service-worker.js",
+    "static/css/main.9b1431d8.chunk.css.map": "/aws-fe-sample/static/css/main.9b1431d8.chunk.css.map",
+    "static/js/2.64c5b7d3.chunk.js.LICENSE.txt": "/aws-fe-sample/static/js/2.64c5b7d3.chunk.js.LICENSE.txt",
+    "static/media/image.jpg": "/aws-fe-sample/static/media/image.4f86da32.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a5faddc1.js",
+    "static/js/2.64c5b7d3.chunk.js",
+    "static/css/main.9b1431d8.chunk.css",
+    "static/js/main.5718cd99.chunk.js"
+  ]
+}
