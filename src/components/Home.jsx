@@ -1,5 +1,6 @@
 import React from "react";
 import GridList from "@material-ui/core/GridList";
+import Box from "@mui/material/Box";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import ListSubheader from "@material-ui/core/ListSubheader";
@@ -21,34 +22,67 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import authService from "./../service/authService";
+import ProductCard from "./ProductCard";
+import ItemList from "./ItemList";
+
+const products = [
+  {
+    id: 1,
+    name: "Dolo 650",
+    description: "Paracetemol tablets IP",
+    imageUrl:
+      "https://i1.wp.com/medigram.in/wp-content/uploads/2020/08/Dolo-650-Mg-tablet.png?fit=668%2C436&ssl=1",
+  },
+  {
+    id: 2,
+    name: "Colpol Syrup",
+    description: "Paracetemol Pediatric Oral Suspension",
+    imageUrl:
+      "https://static2.medplusmart.com/products/_0add325_/CALP0003_L.jpg",
+  },
+  {
+    id: 3,
+    name: "Cofsils Syrup",
+    description: "COFSILS DX Syrup 100ml",
+    imageUrl:
+      "https://www.netmeds.com/images/product-v1/600x600/1062701/cofsils_dx_cough_syrup_100ml_507078_0_0.jpg",
+  },
+  {
+    id: 4,
+    name: "Leeford leekuf Syrup",
+    description: "Leeford leekuf Syrup",
+    imageUrl: "https://m.media-amazon.com/images/I/71gauJHvnPS.jpg",
+  },
+  // Add more products here
+];
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
-      display: "block"
-    }
+      display: "block",
+    },
   },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
+      backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: "auto"
-    }
+      width: "auto",
+    },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -57,10 +91,10 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   inputRoot: {
-    color: "inherit"
+    color: "inherit",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -69,37 +103,37 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "20ch"
-    }
+      width: "20ch",
+    },
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
+      display: "flex",
+    },
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
+      display: "none",
+    },
   },
   body_root: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
     overflow: "hidden",
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
   },
   body_gridList: {
     // width: 500,
     // height: 450
     width: "60%",
-    height: "70%"
+    height: "70%",
   },
   icon: {
-    color: "rgba(255, 255, 255, 0.54)"
-  }
+    color: "rgba(255, 255, 255, 0.54)",
+  },
 }));
 
 export default function Home(props) {
@@ -191,7 +225,7 @@ export default function Home(props) {
 
   return (
     <>
-      <div className={classes.grow}>
+      <div style={{ width: "100vw" }} className={classes.grow}>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -203,7 +237,7 @@ export default function Home(props) {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
-              Welcome, {sessionStorage.getItem("username").toLocaleUpperCase()}
+              Global Medicals Online
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -213,7 +247,7 @@ export default function Home(props) {
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,
-                  input: classes.inputInput
+                  input: classes.inputInput,
                 }}
                 inputProps={{ "aria-label": "search" }}
               />
@@ -260,7 +294,15 @@ export default function Home(props) {
         {renderMobileMenu}
         {renderMenu}
       </div>
-      <div className={classes.body_root}>
+      {/* <Box display="flex" flexWrap="wrap" justifyContent="center" gap={2}>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Box> */}
+      <div width="auto">
+        <ItemList />
+      </div>
+      {/* <div className={classes.body_root}>
         <GridList cellHeight={180} className={classes.body_gridList}>
           <GridListTile key="Subheader" cols={2} style={{ height: "auto" }}>
             <ListSubheader component="div"></ListSubheader>
@@ -283,7 +325,7 @@ export default function Home(props) {
             </GridListTile>
           ))}
         </GridList>
-      </div>
+      </div> */}
     </>
   );
 }
