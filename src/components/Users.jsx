@@ -8,6 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Typography } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -42,9 +43,9 @@ const rows = [
 ];
 
 export default function CustomizedTables() {
-  const [data, setData] = useState({ loading: false, list: [] });
+  const [data, setData] = useState({ loading: true, list: [] });
   useEffect(() => {
-    fetch("http://35.154.223.98:8081/users")
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then((d) => d.json())
       .then((resp) =>
         setData((p) => ({
@@ -56,30 +57,41 @@ export default function CustomizedTables() {
   }, []);
   return (
     <TableContainer component={Paper}>
+      <Typography variant="h5" component="h5">
+        <center>Our Customers</center>
+      </Typography>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Name</StyledTableCell>
-            <StyledTableCell align="">User Name</StyledTableCell>
-            <StyledTableCell align="">Email</StyledTableCell>
-            <StyledTableCell align="">Phone</StyledTableCell>
-            <StyledTableCell align="">Company</StyledTableCell>
+            <StyledTableCell>User Name</StyledTableCell>
+            <StyledTableCell>Email</StyledTableCell>
+            <StyledTableCell>Phone</StyledTableCell>
+            <StyledTableCell>Company</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.list &&
-            data.list.length > 0 &&
+          {data.loading ? (
+            <Typography variant="h6" component="h6">
+              Loading our customers, please hang on..
+            </Typography>
+          ) : data.list.length > 0 ? (
             data.list.map((row) => (
               <StyledTableRow key={row.name}>
                 <StyledTableCell component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
-                <StyledTableCell align="">{row.username}</StyledTableCell>
-                <StyledTableCell align="">{row.email}</StyledTableCell>
-                <StyledTableCell align="">{row.phone}</StyledTableCell>
-                <StyledTableCell align="">{row.company?.name}</StyledTableCell>
+                <StyledTableCell>{row.username}</StyledTableCell>
+                <StyledTableCell>{row.email}</StyledTableCell>
+                <StyledTableCell>{row.phone}</StyledTableCell>
+                <StyledTableCell>{row.company?.name}</StyledTableCell>
               </StyledTableRow>
-            ))}
+            ))
+          ) : (
+            <Typography variant="h5" component="h5">
+              No records found
+            </Typography>
+          )}
         </TableBody>
       </Table>
     </TableContainer>

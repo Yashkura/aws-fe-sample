@@ -13,7 +13,6 @@ import Header from "./components/Header";
 export default function App() {
   return (
     <>
-      {/* <Header /> */}
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
